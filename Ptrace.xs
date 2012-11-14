@@ -337,13 +337,13 @@ constant(sv,arg)
     OUTPUT:
 	RETVAL
 
-int
+long
 _ptrace(request, pid, addr, data)
     INPUT:
-	int		request
+	double		request
 	int		pid
-	int		addr
-	int		data
+	size_t		addr
+	size_t		data
     CODE:
 	RETVAL = ptrace(request, pid, (void*) addr, (void*) data);
     OUTPUT:
