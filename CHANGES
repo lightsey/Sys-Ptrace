@@ -1,6 +1,12 @@
 CHANGES
 -------
 
+0.06  Sun, 09 Dec 2012 14:55:26 -0600
+    - Fix type sizes in XS  code for AMD64 compatibility
+    - Removed dependency on h2ph converted headers in  t/110_constants.t
+    - Fixed hanging behavior in t/200_strace.t
+    - Removed obsolete RPM spec file generation logic
+
 0.05  Mon Nov 30 12:00:00 2001
 	- Added t/200_strace.t for an
 	  actual test using PTRACE_SYSCALL

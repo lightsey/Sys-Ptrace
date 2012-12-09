@@ -6,7 +6,7 @@ use Exporter;
 use DynaLoader;
 use Carp qw( croak );
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 @ISA     = qw(Exporter DynaLoader);
 
 @EXPORT_OK = qw(
