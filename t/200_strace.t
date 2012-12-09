@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 use Test::NoWarnings;
-use Test::More ( tests => 5 );
+use Test::More ( tests => 7 );
 use Sys::Ptrace qw( ptrace PTRACE_TRACEME PTRACE_SYSCALL PTRACE_DETACH);
 use vars qw($sig_chld);
 
@@ -81,12 +81,14 @@ while ( $tracing && $tracing < 200 ) {
         $sig_chld = 0;
         $?        = 0;
         my $w = waitpid( $pid, 0 );
+        my $signal_number = ( $? >> 8 );
         if ( $w > 0 ) {
-            if ( ( $? >> 8 ) == 5 ) {    # SIG_TRAP
+            if ( $signal_number == 5 ) {    # SIG_TRAP
                 $syscalls++;
             }
             else {
-                ptrace( PTRACE_DETACH, $pid );
+                is( $signal_number, 0, 'Child process exited without error' );
+                ok( ptrace( PTRACE_DETACH, $pid ), 'Detached from child without error' );
                 $tracing = 0;
             }
         }
