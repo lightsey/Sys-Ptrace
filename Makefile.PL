@@ -1,27 +1,29 @@
 use ExtUtils::MakeMaker;
+
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
-WriteMakefile
-  NAME		=> 'Sys::Ptrace',
-  VERSION_FROM	=> 'Ptrace.pm', # finds $VERSION
-  PREREQ_PM	=> {}, # e.g., Module::Name => 1.1
-  LIBS		=> [''], # e.g., '-lm'
-  DEFINE	=> '', # e.g., '-DHAVE_SOMETHING'
-  INC		=> '', # e.g., '-I/usr/include/other'
-  clean => {
-    FILES => q[*.bak *~ *.spec],
-  };
+WriteMakefile(
+    NAME         => 'Sys::Ptrace',
+    VERSION_FROM => 'Ptrace.pm',     # finds $VERSION
+    PREREQ_PM    => {},              # e.g., Module::Name => 1.1
+    LIBS         => [''],            # e.g., '-lm'
+    DEFINE       => '',              # e.g., '-DHAVE_SOMETHING'
+    INC          => '',              # e.g., '-I/usr/include/other'
+    clean        => {
+        FILES => q[*.bak *~ *.spec],
+    }
+);
 
 package MY;
 
 sub libscan {
-  my $self = shift;
-  my $path = shift;
-  ($path =~ / \bCVS\b | \~$ /x) ? undef : $path;
+    my $self = shift;
+    my $path = shift;
+    ( $path =~ / \bCVS\b | \~$ /x ) ? undef : $path;
 }
 
 sub postamble {
-  return qq^
+    return qq^
 
 pm_to_blib: README
 
