@@ -23,13 +23,11 @@ DESCRIPTION
     binary or it is third party code.
 
   EXPORT
-
     ptrace( $request, $pid, $addr, $data)
 
       Returns true on success and sets $! on failure.
 
   EXPORT_OK
-
       PT_ATTACH
       PT_CONTINUE
       PT_DETACH
@@ -54,15 +52,18 @@ DESCRIPTION
     and all PTRACE_* constants defined in linux/ptrace.h and asm/ptrace.h
 
 BUGS
-    It is designed specifically for linux OS on x86 platform. It is not
-    meant to be tested or used on any other system at this time. Any
-    portability changes and/or bug fixes should be sent to the author.
+    It is designed specifically for linux OS on the x86 and x86_64
+    platforms. It is not meant to be tested or used on any other system at
+    this time. Any portability changes and/or bug fixes should be sent to
+    the author.
 
 AUTHOR
     Rob Brown, rob@roobik.com
 
 COPYRIGHT
     Copyright (c) 2001 Rob Brown. All rights reserved.
+
+    Copyright (c) 2012 John Lightsey. All rights reserved.
 
     This program is free software; you may redistribute it and/or modify it
     under the same terms as Perl itself.
